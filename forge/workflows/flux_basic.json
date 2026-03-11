@@ -1,0 +1,117 @@
+{
+    "1": {
+        "inputs": {
+            "unet_name": "flux1-dev.safetensors",
+            "weight_dtype": "fp8_e4m3fn"
+        },
+        "class_type": "UNETLoader"
+    },
+    "2": {
+        "inputs": {
+            "vae_name": "ae.safetensors"
+        },
+        "class_type": "VAELoader"
+    },
+    "3": {
+        "inputs": {
+            "clip_name1": "clip_l.safetensors",
+            "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+            "type": "flux"
+        },
+        "class_type": "DualCLIPLoader"
+    },
+    "4": {
+        "inputs": {
+            "width": 1024,
+            "height": 1024,
+            "batch_size": 1
+        },
+        "class_type": "EmptyLatentImage"
+    },
+    "5": {
+        "inputs": {
+            "text": "A high-tech laboratory with two massive RTX 3060 GPUs glowing in the dark, 256GB RAM stacks visible, hyper-realistic, cinematic lighting",
+            "clip": [
+                "3",
+                0
+            ]
+        },
+        "class_type": "CLIPTextEncode"
+    },
+    "6": {
+        "inputs": {
+            "model": [
+                "1",
+                0
+            ],
+            "conditioning": [
+                "5",
+                0
+            ]
+        },
+        "class_type": "BasicGuider"
+    },
+    "7": {
+        "inputs": {
+            "scheduler": "simple",
+            "steps": 20,
+            "denoise": 1,
+            "model": [
+                "1",
+                0
+            ]
+        },
+        "class_type": "BasicScheduler"
+    },
+    "8": {
+        "inputs": {
+            "noise": [
+                "9",
+                0
+            ],
+            "guider": [
+                "6",
+                0
+            ],
+            "sampler": "euler",
+            "sigmas": [
+                "7",
+                0
+            ],
+            "latent_image": [
+                "4",
+                0
+            ]
+        },
+        "class_type": "SamplerCustom"
+    },
+    "9": {
+        "inputs": {
+            "seed": 42
+        },
+        "class_type": "RandomNoise"
+    },
+    "10": {
+        "inputs": {
+            "samples": [
+                "8",
+                0
+            ],
+            "vae": [
+                "2",
+                0
+            ]
+        },
+        "class_type": "VAEDecode"
+    },
+    "11": {
+        "inputs": {
+            "filename_prefix": "G-FORGE",
+            "images": [
+                "10",
+                0
+            ]
+        },
+        "class_type": "SaveImage"
+    }
+}

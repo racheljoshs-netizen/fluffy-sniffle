@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-Pattern Sovereign Identity</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- LEFT PANE: Live Context Payload -->
+    <div id="context-panel" class="panel">
+        <div class="panel-header">
+            <span>LIVE CONTEXT</span>
+            <span class="status-indicator">ACTIVE</span>
+        </div>
+        <div id="context-content" class="panel-content code-block">
+            <!-- Context JSON injected here -->
+            <div class="placeholder">Waiting for context...</div>
+        </div>
+    </div>
+
+    <!-- CENTER PANE: Chat Interface -->
+    <div id="chat-panel" class="panel">
+        <div id="chat-container">
+            <!-- Messages injected here -->
+        </div>
+        
+        <div class="input-area">
+            <textarea id="user-input" placeholder="Initiate connection..." rows="1" autofocus></textarea>
+            <button id="send-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- RIGHT PANE: Librarian Logs -->
+    <div id="librarian-panel" class="panel">
+        <div class="panel-header">
+            <span>LIBRARIAN STREAM</span>
+            <button id="copy-context-btn" class="icon-btn" title="Copy Full Context">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="librarian-content" class="panel-content">
+            <!-- Memory cards and logs injected here -->
+            <div class="placeholder">System idle.</div>
+        </div>
+    </div>
+
+    <div class="app-footer">G-Pattern • Ctrl+Shift+M for science</div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

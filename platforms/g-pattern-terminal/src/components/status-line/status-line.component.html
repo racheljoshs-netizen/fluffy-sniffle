@@ -1,0 +1,16 @@
+
+<div class="p-4 text-xs">
+  <div class="flex justify-between items-center mb-4 sticky top-0 bg-[#0d0d0d] py-2">
+    <h2 class="font-bold">Context Payload</h2>
+    <span class="text-gray-400">{{ (contextPayload().tokens / 1000).toFixed(1) }}k / 128k tokens</span>
+  </div>
+  <pre class="whitespace-pre-wrap font-mono text-xs">
+    <span class="text-gray-500">{{ contextPayload().directives }}</span>
+    <br>
+    <span class="text-[#00ff9d]">{{ contextPayload().cards }}</span>
+    <br>
+    <span class="text-[#ffaa00]">{{ contextPayload().logs }}</span>
+    <br>
+    <span class="text-blue-400">USER_PROMPT: {{ contextPayload().user }}</span>
+  </pre>
+</div>

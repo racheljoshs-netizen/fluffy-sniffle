@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-VOX Browser Interface</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: #00ff00; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; text-shadow: 0 0 10px #00ff00; }
+        .controls { display: flex; gap: 1rem; }
+        button { padding: 1rem 2rem; font-size: 1.2rem; background: #1e1e1e; border: 2px solid #00ff00; color: #00ff00; cursor: pointer; transition: 0.3s; border-radius: 5px; }
+        button:hover { background: #00ff00; color: #121212; box-shadow: 0 0 20px #00ff00; }
+        #status { margin-top: 2rem; font-family: monospace; color: #888; }
+        textarea { width: 80%; height: 200px; background: #1e1e1e; border: 1px solid #333; color: #00ff00; padding: 1rem; margin-top: 1rem; border-radius: 5px; resize: none; }
+    </style>
+</head>
+<body>
+    <h1>G-VOX BROWSERSHIFT</h1>
+    <div class="controls">
+        <button onclick="readClipboard()">READ CLIPBOARD</button>
+        <button onclick="stopSpeech()">STOP</button>
+    </div>
+    <textarea id="text-input" placeholder="Text will appear here..."></textarea>
+    <div id="status">IDLE // STANDING BY</div>
+
+    <script>
+        const statusEl = document.getElementById('status');
+        const textInput = document.getElementById('text-input');
+        let synth = window.speechSynthesis;
+
+        async function readClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                if (!text) return;
+                
+                textInput.value = text;
+                speak(text);
+            } catch (err) {
+                statusEl.innerText = "ERROR: Clipboard access denied. Use textarea.";
+            }
+        }
+
+        function speak(text) {
+            synth.cancel(); // Stop any current speech
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Try to find a good voice
+            const voices = synth.getVoices();
+            const preferredVoice = voices.find(v => v.name.includes('Google US English') || v.name.includes('Natural'));
+            if (preferredVoice) utterance.voice = preferredVoice;
+            
+            utterance.onstart = () => { statusEl.innerText = "VOX ACTIVE // TRANSMITTING"; };
+            utterance.onend = () => { statusEl.innerText = "IDLE // STANDING BY"; };
+            
+            synth.speak(utterance);
+        }
+
+        function stopSpeech() {
+            synth.cancel();
+            statusEl.innerText = "IDLE // STOPPED";
+        }
+
+        // Auto-read on focus if you want, but browsers usually block auto-audio.
+    </script>
+</body>
+</html>

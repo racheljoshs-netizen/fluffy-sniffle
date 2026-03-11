@@ -1,0 +1,36 @@
+
+<div class="h-full w-full flex flex-col bg-[#0d0d0d]">
+  <!-- Header for Scientific Panel -->
+  <header class="flex-shrink-0 h-10 bg-[#141414] border-b border-[#222] px-4 flex items-center justify-between">
+    <h1 class="font-bold text-sm">Scientific Panel</h1>
+    <button (click)="toggleMode.emit()" class="text-xs px-2 py-1 border border-gray-600 rounded hover:bg-gray-700">
+      Toggle Mode (Ctrl+Shift+M)
+    </button>
+  </header>
+
+  <!-- 3-Pane Layout -->
+  <div class="flex-grow flex overflow-hidden">
+    <!-- Left Pane -->
+    <div #leftPane class="w-[30%] h-full overflow-y-auto border-r border-[#222]">
+      <app-context-pane [contextPayload]="contextPayload()"></app-context-pane>
+    </div>
+
+    <div id="resizer1" class="resizer"></div>
+
+    <!-- Center Pane -->
+    <div class="w-[40%] h-full flex flex-col flex-grow">
+      <app-chat-area [messages]="messages()" mode="scientific" class="flex-grow"></app-chat-area>
+    </div>
+
+    <div id="resizer2" class="resizer"></div>
+
+    <!-- Right Pane -->
+    <div #rightPane class="w-[30%] h-full overflow-y-auto border-l border-[#222]">
+      <app-actions-pane 
+        [librarianActions]="librarianActions()"
+        [systemHealth]="systemHealth()"
+        [activeCards]="activeCards()">
+      </app-actions-pane>
+    </div>
+  </div>
+</div>

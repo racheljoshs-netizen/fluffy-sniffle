@@ -1,0 +1,6 @@
+openai-whisper
+sounddevice
+numpy
+pynput
+requests
+playsound==1.2.2

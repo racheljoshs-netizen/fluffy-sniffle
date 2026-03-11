@@ -1,0 +1,22 @@
+
+<div class="flex flex-col h-screen max-h-screen font-mono text-sm bg-black text-[#e8e8e8] text-[15px]">
+  <div class="flex-grow overflow-hidden">
+    @if (mode() === 'user') {
+      <div class="h-full flex flex-col bg-black">
+        <app-chat-area [messages]="messages()" [mode]="mode()" class="flex-grow"></app-chat-area>
+      </div>
+    } @else {
+      <app-scientific-panel 
+        [messages]="messages()"
+        [contextPayload]="contextPayload()"
+        [librarianActions]="librarianActions()"
+        [systemHealth]="systemHealth()"
+        [activeCards]="activeCards()"
+        (toggleMode)="toggleMode()" 
+        class="h-full">
+      </app-scientific-panel>
+    }
+  </div>
+  
+  <app-input-bar (sendMessage)="handleSendMessage($event)" [isLoading]="isLoading()"></app-input-bar>
+</div>

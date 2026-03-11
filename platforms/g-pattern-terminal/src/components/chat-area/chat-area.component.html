@@ -1,0 +1,26 @@
+
+<div class="h-full overflow-y-auto p-4 custom-scrollbar">
+  @for (message of messages(); track message.id; let i = $index) {
+    <div #message class="mb-3">
+      <div [class]="message.sender === 'user' ? 'flex justify-end' : 'flex justify-start'">
+        <div class="max-w-4xl w-full">
+          @switch (message.type) {
+            @case ('text') {
+              <div class="px-4 py-3" [class]="message.sender === 'user' ? 'bg-[#111111] rounded-lg' : ''">
+                <p class="whitespace-pre-wrap leading-relaxed">{{ message.content }}</p>
+              </div>
+            }
+            @case ('error') {
+              <div class="border border-[#ff4d4d] rounded-lg p-3 bg-red-900/20 text-red-300">
+                <p><span class="font-bold">System Error:</span> {{ message.content }}</p>
+              </div>
+            }
+          }
+        </div>
+      </div>
+      @if (i < messages().length - 1) {
+        <div class="my-3 h-px bg-[#1a1a1a]"></div>
+      }
+    </div>
+  }
+</div>

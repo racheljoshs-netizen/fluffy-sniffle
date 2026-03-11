@@ -1,0 +1,5 @@
+{
+  "name": "G-Pattern Terminal",
+  "description": "A minimalist, informative front-end acting as a dumb terminal for a proxy. It provides absolute clarity on proxy actions and instant access to identity state with no cognitive overhead.",
+  "requestFramePermissions": []
+}

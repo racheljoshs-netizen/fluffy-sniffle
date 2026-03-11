@@ -1,0 +1,16 @@
+
+<div class="flex-shrink-0 min-h-[56px] bg-black border-t border-[#222] p-2 flex items-start space-x-2">
+  <textarea 
+    class="flex-grow bg-transparent text-[#e8e8e8] placeholder-gray-600 resize-none outline-none p-2 max-h-48"
+    placeholder="Send message..."
+    [value]="prompt()"
+    [disabled]="isLoading()"
+    [class]="isLoading() ? 'opacity-50 cursor-not-allowed' : ''"
+    (input)="onInput($event)"
+    (keydown)="handleKeydown($event)"
+    rows="1"
+  ></textarea>
+  <div class="flex-shrink-0 flex flex-col items-end justify-end h-full p-1">
+    <span class="text-xs text-gray-500">{{ (currentTokens() / 1000).toFixed(1) }}k / {{ maxTokens / 1000 }}k</span>
+  </div>
+</div>

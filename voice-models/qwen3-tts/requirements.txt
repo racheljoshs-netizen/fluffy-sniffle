@@ -1,0 +1,9 @@
+# Qwen3-TTS Requirements
+torch>=2.0.0
+torchvision
+torchaudio
+transformers>=4.35.0
+accelerate
+soundfile
+librosa
+flask

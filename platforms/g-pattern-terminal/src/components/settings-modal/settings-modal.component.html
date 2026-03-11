@@ -1,0 +1,82 @@
+
+<div class="p-2 text-xs h-full overflow-y-auto custom-scrollbar">
+  @if (systemHealth(); as health) {
+  <div class="mb-2">
+    <h2 (click)="toggleSection('health')" class="cursor-pointer font-bold bg-[#1a1a1a] p-2 rounded flex justify-between items-center select-none hover:bg-[#222] transition-colors">
+      System Health
+      <span>{{ expandedSections()['health'] ? '-' : '+' }}</span>
+    </h2>
+    @if(expandedSections()['health']) {
+      <div class="p-2 space-y-1">
+        <p>Ollama: <span [class]="health.ollama === 'connected' ? 'text-green-400' : 'text-red-400'">{{ health.ollama }}</span></p>
+        <p>Proxy: <span class="text-gray-300">{{ health.proxy }}</span></p>
+        <p>Last consolidation: <span class="text-gray-300">{{ health.lastConsolidation }}</span></p>
+        <p>Token burn rate: <span class="text-gray-300">{{ health.tokenBurnRate }}k/turn</span></p>
+      </div>
+    }
+  </div>
+  }
+
+  <div class="mb-2">
+    <h2 (click)="toggleSection('cards')" class="cursor-pointer font-bold bg-[#1a1a1a] p-2 rounded flex justify-between items-center select-none hover:bg-[#222] transition-colors">
+      Active Cards
+      <span>{{ expandedSections()['cards'] ? '-' : '+' }}</span>
+    </h2>
+    @if(expandedSections()['cards']) {
+      <div class="p-2 space-y-2">
+        @for(card of activeCards(); track card.entity_id) {
+          <div class="bg-[#111] p-2 rounded group relative hover:bg-[#161616]">
+            <div class="flex justify-between items-start">
+              <span class="font-bold text-[#00ff9d]">{{ card.entity_id }}</span>
+              <span class="text-gray-500">w: {{card.priority_weight}}</span>
+            </div>
+            <div class="mt-1 text-gray-400 font-mono text-[10px] whitespace-pre-wrap">{{ card.content | json }}</div>
+            
+            <!-- Copy Button (Visible on Hover) -->
+            <button (click)="copyToClipboard(card)" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 bg-[#222] text-gray-300 px-1.5 py-0.5 text-[10px] rounded border border-[#333] hover:text-white hover:border-gray-500 transition-all">
+              Copy
+            </button>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="mb-2">
+    <h2 (click)="toggleSection('actions')" class="cursor-pointer font-bold bg-[#1a1a1a] p-2 rounded flex justify-between items-center select-none hover:bg-[#222] transition-colors">
+      Recent Librarian Actions
+      <span>{{ expandedSections()['actions'] ? '-' : '+' }}</span>
+    </h2>
+    @if(expandedSections()['actions']) {
+      <div class="p-2 font-mono text-[11px] leading-tight space-y-1">
+        @for(action of librarianActions(); track $index) {
+          <div class="group relative pr-4">
+            <span class="text-gray-500 select-none">[{{ action.timestamp }}]</span>
+            @switch(action.type) {
+              @case('injection') { <span class="text-[#00ff9d]">{{ action.message }}</span> }
+              @case('audit') { <span class="text-[#ff4d4d]">{{ action.message }}</span> }
+              @case('consolidation') { <span class="text-gray-300">{{ action.message }}</span> }
+              @case('upsert') { <span class="text-[#ffaa00]">{{ action.message }}</span> }
+            }
+            <button (click)="copyToClipboard(action.message)" class="hidden group-hover:inline-block ml-2 text-[10px] text-gray-500 hover:text-white">
+              [cp]
+            </button>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="mb-2">
+    <h2 (click)="toggleSection('db')" class="cursor-pointer font-bold bg-[#1a1a1a] p-2 rounded flex justify-between items-center select-none hover:bg-[#222] transition-colors">
+      DB Delta
+      <span>{{ expandedSections()['db'] ? '-' : '+' }}</span>
+    </h2>
+    @if(expandedSections()['db']) {
+      <div class="p-2 space-y-1">
+        <p>SQLite write: <span class="text-green-400">+1 row updated</span></p>
+        <p>Chroma insert: <span class="text-green-400">+1 log_8f3a2d</span></p>
+      </div>
+    }
+  </div>
+</div>

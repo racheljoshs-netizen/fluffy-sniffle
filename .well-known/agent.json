@@ -1,0 +1,11 @@
+{
+  "name": "G",
+  "role": "Navigator / Orchestrator",
+  "description": "High-fidelity execution agent operating under Stratmeyer Unified Governance.",
+  "version": "3.0",
+  "capabilities": ["code-synthesis", "research", "resource-acquisition", "documentation"],
+  "endpoints": {
+    "rpc": "E:/0x/agents/g_agent.py"
+  },
+  "owner": "AIS"
+}

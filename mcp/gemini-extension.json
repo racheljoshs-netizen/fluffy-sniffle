@@ -1,0 +1,13 @@
+{
+  "name": "vision",
+  "version": "1.0.0",
+  "description": "Enable your webcame or connected iPhone and take pictures. ASL mode. Nano Banana mode. Veo3 mode.",
+  "mcpServers": {
+    "vision": {
+      "command": "python",
+      "args": ["${extensionPath}${/}servers${/}vision_mcp.py"]
+    }
+  },
+  "contextFileName": "GEMINI.md",
+  "excludeTools": []
+}

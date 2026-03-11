@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(findstr:*)",
+      "Bash(powershell:*)",
+      "Bash(wmic memorychip:*)",
+      "Bash(python:*)",
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "Bash(git config:*)",
+      "Bash(cmd /c \"dir E:\\\\0x\")",
+      "Bash(python3:*)",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "Bash(unzip:*)",
+      "Bash(choco install:*)"
+    ]
+  }
+}

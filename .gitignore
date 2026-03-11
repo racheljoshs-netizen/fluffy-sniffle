@@ -1,0 +1,6 @@
+nul
+.tmp_audit
+*.onnx
+*.bin
+agency/voices.json
+.env

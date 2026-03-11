@@ -1,0 +1,12 @@
+
+.resizer {
+  background-color: #222;
+  cursor: col-resize;
+  width: 4px;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.resizer:hover {
+  background-color: #00ff9d;
+}

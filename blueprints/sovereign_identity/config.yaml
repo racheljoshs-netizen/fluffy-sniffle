@@ -1,0 +1,37 @@
+# config.yaml — G-Pattern Sovereign Identity Engine
+
+# ---------------------------------------------------------------------------
+# Local Librarian (Ollama)
+# ---------------------------------------------------------------------------
+ollama_base: http://localhost:11434
+librarian_model: gemma3n:e4b
+embedding_model: nomic-embed-text
+
+# ---------------------------------------------------------------------------
+# Main Reasoning Model (via litellm)
+# ---------------------------------------------------------------------------
+# Supports: gemini/gemini-2.5-pro, claude-3-5-sonnet, gpt-4o, grok-beta, etc.
+backend_model: gemini/gemini-3-flash-preview
+api_base: null                              # set for custom endpoints
+api_key: AIzaSyCMLp-K-VmU5mkbgmvl9VAynt9BPXKF0uI     # Primary project# Fallback: REMOVED per user directive (Gemini Only)
+mock_mode: false
+
+# ---------------------------------------------------------------------------
+# Proxy
+# ---------------------------------------------------------------------------
+proxy_port: 8000
+
+# ---------------------------------------------------------------------------
+# Storage
+# ---------------------------------------------------------------------------
+data_dir: ./data
+sqlite_path: heuristic_cards.db             # relative to data_dir
+chroma_path: chroma_vault                   # relative to data_dir
+
+# ---------------------------------------------------------------------------
+# Consolidation / Memory Tuning
+# ---------------------------------------------------------------------------
+consolidation_interval_minutes: 10
+consolidation_decay_rate: 0.5
+max_injected_cards: 4
+embedding_similarity_threshold: 0.75

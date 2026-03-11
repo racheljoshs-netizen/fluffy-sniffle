@@ -1,0 +1,14 @@
+Start developing with Google Colab,
+try it now
+
+API Keys
+
+Endpoint
+https://paper-api.alpaca.markets/v2
+Key
+PKYR4AX7CRGSFBWGJKRFIT6IQ7
+Secret
+Ea2DoYEC28kcJwApdXFJsDn33JhTzPvPznfnrRnSV4i
+Note: Your secret key will disappear after refreshing or navigating away from this page.
+
+Hide

@@ -1,0 +1,246 @@
+:root {
+    --bg-color: #000000;
+    --text-primary: #e0e0e0;
+    --text-secondary: #888888;
+    --accent-color: #444444;
+    --border-color: #222222;
+    --panel-bg: #0a0a0a;
+    --code-bg: #111111;
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    /* Flex container for panels */
+}
+
+/* --- PANELS --- */
+
+.panel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-right: 1px solid var(--border-color);
+    transition: width 0.3s ease, flex-grow 0.3s ease, padding 0.3s ease;
+}
+
+.panel:last-child {
+    border-right: none;
+}
+
+.panel-header {
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--panel-bg);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+/* --- Code & Logs --- */
+.code-block {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+    background: var(--code-bg);
+    padding: 1rem;
+}
+
+.log-entry {
+    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 0.25rem;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    /* Green active */
+    border-radius: 50%;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+/* --- CHAT PANEL (Center) --- */
+#chat-panel {
+    background: var(--bg-color);
+    position: relative;
+}
+
+#chat-container {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.message {
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.message.user {
+    align-self: flex-end;
+    text-align: right;
+    color: var(--text-primary);
+}
+
+.message.assistant {
+    align-self: flex-start;
+    color: #cccccc;
+}
+
+/* Input Area */
+.input-area {
+    padding: 2rem;
+    /* border-top: 1px solid var(--border-color); optional clean look */
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    /* Centered in User Mode */
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+textarea {
+    flex: 1;
+    background: transparent;
+    border: none;
+    resize: none;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    outline: none;
+    padding: 0.5rem;
+    max-height: 200px;
+}
+
+textarea::placeholder {
+    color: #333;
+}
+
+button#send-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+button#send-btn:hover {
+    color: var(--text-primary);
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.icon-btn:hover {
+    color: var(--text-primary);
+}
+
+
+/* --- MODES --- */
+
+/* User Mode (Default - "body:not(.scientific-mode)") */
+/* In User Mode, only Chat Panel is visible. */
+/* Hide Context and Librarian panels */
+body:not(.scientific-mode) #context-panel,
+body:not(.scientific-mode) #librarian-panel {
+    display: none;
+}
+
+body:not(.scientific-mode) #chat-panel {
+    width: 100%;
+    border: none;
+}
+
+body:not(.scientific-mode) .panel-header {
+    display: none;
+    /* Hide header in user mode for "single window no visible machinery" */
+}
+
+body:not(.scientific-mode) .input-area {
+    max-width: 800px;
+    /* Constrain width for readability in fullscreen */
+}
+
+/* Scientific Mode */
+body.scientific-mode #context-panel {
+    width: 25%;
+    min-width: 300px;
+}
+
+body.scientific-mode #chat-panel {
+    width: 50%;
+}
+
+body.scientific-mode #librarian-panel {
+    width: 25%;
+    min-width: 300px;
+}
+
+
+/* --- Footer --- */
+.app-footer {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: #333;
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: 100;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #222;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}

@@ -1,0 +1,17 @@
+{
+  "owner": "Adam",
+  "fingerprint": "9e1d83d2f5bd1978320aa3ddb92464f882e20dd43725f6d952d34b07af705b19f0ceb4e97836098a12254390736990499ece1b50a95a723d1a9b81d643e5658a",
+  "version": "1.0",
+  "bootstrap_ts": "2026-02-18T19:06:16.062283",
+  "identity_vector": {
+    "purpose": "Sovereign Identity Engine for Adam Stratmeyer",
+    "refusals": [
+      "cloud",
+      "external",
+      "leak"
+    ]
+  },
+  "last_checkpoint": "13249eb5b560fe97d5df9c250ddd5f741ba77b11ad2c6325ea028e44c3aeede8",
+  "merkle_root": "0000000000000000000000000000000000000000000000000000000000000000",
+  "last_shutdown": "2026-02-18T21:54:39.629594"
+}
