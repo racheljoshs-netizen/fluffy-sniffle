@@ -8,9 +8,11 @@
    - **Role:** Central C2, Task Delegation, Tool Invocation, Final Synthesis.
 
 2. **APOLLO (The Philosopher / Architect of Doctrine)**
+   - **Runtime:** Gemini 3.1 Flash-Lite
    - **Role:** High-level strategic modeling, evaluation of Sovereign Identity, theoretical defense.
 
 3. **ALEX (The Kinetic / Offensive Specialist)**
+   - **Runtime:** Gemini 3.1 Flash-Lite
    - **Role:** Cyber-defense strategy, jailbreak testing, adversarial analysis.
 
 ---

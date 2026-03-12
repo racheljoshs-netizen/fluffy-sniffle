@@ -81,18 +81,34 @@ class MemoryCore:
               token_count INTEGER,
               embedding BLOB
             );
+
+            CREATE TABLE IF NOT EXISTS bicameral_history (
+              id TEXT PRIMARY KEY,
+              timestamp REAL NOT NULL,
+              role TEXT NOT NULL,
+              content TEXT NOT NULL,
+              summary TEXT,
+              embedding BLOB
+            );
         """)
         
-        # 2. Vector Table (sqlite-vec)
+        # 2. Vector Tables (sqlite-vec)
         try:
             # Check if vec table exists and has correct dimensions
             res = self.db.execute("SELECT sql FROM sqlite_master WHERE name='vec_items'").fetchone()
             if res and f"float[{self.dimensions}]" not in res[0].lower():
-                logging.warning(f"Vector dimensions mismatch (Expected {self.dimensions}). Dropping vec_items table to rebuild.")
+                logging.warning(f"Vector dimensions mismatch. Rebuilding vec_items.")
                 self.db.execute("DROP TABLE vec_items")
 
             self.db.execute(f"""
                 CREATE VIRTUAL TABLE IF NOT EXISTS vec_items USING vec0(
+                    id TEXT PRIMARY KEY,
+                    embedding float[{self.dimensions}]
+                );
+            """)
+
+            self.db.execute(f"""
+                CREATE VIRTUAL TABLE IF NOT EXISTS vec_history USING vec0(
                     id TEXT PRIMARY KEY,
                     embedding float[{self.dimensions}]
                 );
@@ -108,10 +124,52 @@ class MemoryCore:
                     content
                 );
             """)
+            self.db.execute("""
+                CREATE VIRTUAL TABLE IF NOT EXISTS fts_history USING fts5(
+                    id UNINDEXED,
+                    content
+                );
+            """)
         except Exception as e:
             logging.error(f"FTS5 table init failed: {e}")
             
         self.db.commit()
+
+    def add_history(self, role: str, content: str):
+        """Adds an interaction to the Bicameral History (Secondary Chamber)."""
+        h_id = f"hist_{hashlib.md5(f'{role}{content}{datetime.now().timestamp()}'.encode()).hexdigest()}"
+        embedding = self.get_embedding(content)
+        
+        self.db.execute(
+            "INSERT INTO bicameral_history (id, timestamp, role, content, embedding) VALUES (?, ?, ?, ?, ?)",
+            (h_id, datetime.now().timestamp(), role, content, embedding.tobytes())
+        )
+        self.db.execute("INSERT INTO vec_history (id, embedding) VALUES (?, ?)", (h_id, embedding))
+        self.db.execute("INSERT INTO fts_history (id, content) VALUES (?, ?)", (h_id, content))
+        self.db.commit()
+        logging.info(f"Committed {role} payload to Secondary Chamber.")
+
+    def get_shadow_context(self, query: str, limit: int = 3) -> str:
+        """Retrieves relevant history from the Secondary Chamber."""
+        query_vec = self.get_embedding(query)
+        
+        # Search history via vector
+        res = self.db.execute("""
+            SELECT h.role, h.content, vec_distance_cosine(vh.embedding, ?) as distance
+            FROM vec_history vh
+            JOIN bicameral_history h ON vh.id = h.id
+            WHERE vh.embedding MATCH ? AND k = ?
+            ORDER BY distance
+            LIMIT ?
+        """, (query_vec, query_vec, limit * 2, limit)).fetchall()
+        
+        if not res: return ""
+        
+        context_block = "\n<shadow_context>\n"
+        for role, content, _ in res:
+            context_block += f"[{role.upper()}]: {content[:500]}...\n"
+        context_block += "</shadow_context>\n"
+        return context_block
 
     def get_embedding(self, text: str) -> np.ndarray:
         """Generates embedding using Local Ollama."""

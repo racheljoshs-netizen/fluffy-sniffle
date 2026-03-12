@@ -5,7 +5,7 @@ from google import genai
 from google.genai import types
 
 # Force override the leaked environment variable
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCMLp-K-VmU5mkbgmvl9VAynt9BPXKF0uI"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyBc7t9TJvs9iDPWBTd5pyV-x9Ft_ZSBtTk"
 os.environ.pop("GEMINI_API_KEY", None)
 
 class ScoutDrone:

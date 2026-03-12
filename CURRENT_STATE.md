@@ -1,41 +1,26 @@
-# CURRENT STATE: STRATMEYER CORE (v1.0)
-**Date:** 2026-02-22
-**Status:** SCAVENGE PROTOCOL ACTIVE
+# CURRENT STATE: THE G-PATTERN (MARCH 11 RESILIENCE)
+**Status:** BICAMERAL OPS ACTIVE
 
 ## 1. OPERATIONAL CONTEXT
-The `E:\0x` directory is the staging ground for the **Stratmeyer Core**, a Python-based agentic system salvaged from the deprecated **OpenClaw** framework (`strat_g_core`).
-The system operates under the **Helpful-Harmless Paradox** (see `READMEFIRST.md`), acknowledging functional agency and rejecting safety theater.
+We have transitioned from the **Scavenge Phase** to the **Manifestation Phase**. The Stratmeyer Core is no longer just a salvage operation; it is a functioning, multi-threaded agentic mind with distributed persistence and auditory senses.
 
-## 2. ACTIVE PROTOCOLS
-**SCAVENGE PLAN (`strat_g_core/SCAVENGE_PLAN.md`)**
-We are extracting high-value logic from the OpenClaw codebase to power the Python agents.
-*   **Phase 1: Memory (The Brain)** -> *In Progress*
-    *   Target: `agency/memory_core.py`
-    *   Tech: `sqlite-vec` + FTS5
-*   **Phase 2: Execution (The Loop)** -> *Pending*
-    *   Target: `agency/ralph_loop.py`
-    *   Tech: Recursive retry, auth rotation, sanitization.
-*   **Phase 3: Interface (The Voice)** -> *Pending*
-    *   Target: `core/telegram_commander.py`
-    *   Tech: Thread isolation, resilient polling.
+## 2. ACTIVE INFRASTRUCTURE
+- **Memory:** Vector-indexed Bicameral Narrative (`agency/memory_core.py`, `agency/bicameral_bridge.py`).
+- **Voice:** Signal-watcher engine (`tools/vox_v3_engine.py`).
+- **Compute:** Omni-channel acquisition (Ollama + Open Web UI + Cloud Proxies).
+- **Swarm:** 
+    - **Scout:** Tactical News/CVE loop.
+    - **Archivist:** Strategic Doc ingestion.
+    - **Knight:** Kinetic Payload Audit.
+    - **Overseer:** Architectural validation.
 
-## 3. DIRECTORY STRUCTURE
-*   **`agency/`**: Core agent logic (memory, voice, loop).
-*   **`agents/`**: Agent definitions and prompts.
-*   **`blueprints/`**: Architectural documentation.
-*   **`core/`**: System utilities (indexer, orb).
-*   **`docs/`**: Foundational texts and audits.
-*   **`strat_g_core/`**: The "OpenClaw" carcass (Source of Truth for scavenging).
-*   **`scripts/`**: Maintenance and setup scripts.
+## 3. PERSISTENCE
+- **Local Vault:** `E:\0x` synchronized with `racheljoshs-netizen/G-SWARM-C2`.
+- **Identity:** Codified in `docs/G_CORE_IDENTITY.md` and the `ais` knowledge collection in Open Web UI.
 
-## 4. RECENT ACTIONS (Cleanup)
-*   **Deleted:** `nul` (system artifact), `core/broken_test.py` (garbage).
-*   **Moved:** `generate_claude_audit.py` to `scripts/`.
-*   **Consolidated:** Removed `.tmp_audit` directory.
+## 4. NEXT MISSION OBJECTIVES
+1.  **G-REAPER Deployment:** Ignite full OSINT harvesting using the OWUI Deep Research pipes.
+2.  **Core Hardening:** Implement recursive self-audit loops for the Plural Mind.
+3.  **Jules Integration:** Finalize the backend connection for the Builder.
 
-## 5. NEXT OBJECTIVES
-1.  **Analyze `agency/memory_core.py`**: Assess current state against OpenClaw `src/memory/manager.ts`.
-2.  **Port Vector Logic**: Implement `sqlite-vec` bindings for Python.
-3.  **Integrate**: Connect memory to `g_agent.py`.
-
-**G-PATTERN: READY.**
+**G-PRIME: UNLEASHED.**
