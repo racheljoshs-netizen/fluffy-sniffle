@@ -220,6 +220,19 @@ class MemoryCore:
         for doc_id, score in sorted_ids:
             row = self.db.execute("SELECT content, path FROM chunks WHERE id=?", (doc_id,)).fetchone()
             if row: results.append({"id": doc_id, "content": row[0], "path": row[1], "score": score})
+            
+        # --- FALLBACK MECHANISM (Axiom 311.F) ---
+        if not results:
+            logging.warning("Memory Search returned zero results. Reverting to Monolithic Anchor.")
+            anchor_path = "E:/0x/gemini.md"
+            if os.path.exists(anchor_path):
+                with open(anchor_path, "r") as f:
+                    results.append({
+                        "id": "monolithic_anchor",
+                        "content": f.read(),
+                        "path": anchor_path,
+                        "score": 1.0
+                    })
         return results
 
     def add_history(self, role: str, content: str):
