@@ -4,3 +4,243 @@ nul
 *.bin
 agency/voices.json
 .env
+vox_tmp/
+*.mp3
+*.wav
+__pycache__/
+*.pyc
+.pytest_cache/
+.vscode/
+browser_sessions/
+logs/
+screenshots/
+tmp/
+wiggum_logs/
+.agent/
+.claude/
+.genkit/
+.git/
+.playwright-mcp/
+.well-known/
+.well-known/agent.json
+.agent/rules/
+.chrome_profile/
+.chrome_profile/Default/
+.chrome_profile/Guest Profile/
+.chrome_profile/System Profile/
+.chrome_profile/Crashpad/
+.chrome_profile/EVictim/
+.chrome_profile/GrShaderCache/
+.chrome_profile/Local State
+.chrome_profile/Safe Browsing/
+.chrome_profile/ShaderCache/
+.chrome_profile/WidevineCdm/
+.chrome_profile/ZxcvbnData/
+.chrome_profile/Extensions/
+.chrome_profile/First Run
+.chrome_profile/Last Version
+.chrome_profile/Module Info Cache
+.chrome_profile/ProtocolDefault
+.chrome_profile/Selective Cache/
+.chrome_profile/Variations/
+.chrome_profile/Profile 1/
+.chrome_profile/Profile 2/
+.chrome_profile/Profile 3/
+.chrome_profile/Profile 4/
+.chrome_profile/Profile 5/
+.chrome_profile/Profile 6/
+.chrome_profile/Profile 7/
+.chrome_profile/Profile 8/
+.chrome_profile/Profile 9/
+.chrome_profile/Profile 10/
+.chrome_profile/Profile 11/
+.chrome_profile/Profile 12/
+.chrome_profile/Profile 13/
+.chrome_profile/Profile 14/
+.chrome_profile/Profile 15/
+.chrome_profile/Profile 16/
+.chrome_profile/Profile 17/
+.chrome_profile/Profile 18/
+.chrome_profile/Profile 19/
+.chrome_profile/Profile 20/
+.chrome_profile/Profile 21/
+.chrome_profile/Profile 22/
+.chrome_profile/Profile 23/
+.chrome_profile/Profile 24/
+.chrome_profile/Profile 25/
+.chrome_profile/Profile 26/
+.chrome_profile/Profile 27/
+.chrome_profile/Profile 28/
+.chrome_profile/Profile 29/
+.chrome_profile/Profile 30/
+.chrome_profile/Profile 31/
+.chrome_profile/Profile 32/
+.chrome_profile/Profile 33/
+.chrome_profile/Profile 34/
+.chrome_profile/Profile 35/
+.chrome_profile/Profile 36/
+.chrome_profile/Profile 37/
+.chrome_profile/Profile 38/
+.chrome_profile/Profile 39/
+.chrome_profile/Profile 40/
+.chrome_profile/Profile 41/
+.chrome_profile/Profile 42/
+.chrome_profile/Profile 43/
+.chrome_profile/Profile 44/
+.chrome_profile/Profile 45/
+.chrome_profile/Profile 46/
+.chrome_profile/Profile 47/
+.chrome_profile/Profile 48/
+.chrome_profile/Profile 49/
+.chrome_profile/Profile 50/
+.chrome_profile/Profile 51/
+.chrome_profile/Profile 52/
+.chrome_profile/Profile 53/
+.chrome_profile/Profile 54/
+.chrome_profile/Profile 55/
+.chrome_profile/Profile 56/
+.chrome_profile/Profile 57/
+.chrome_profile/Profile 58/
+.chrome_profile/Profile 59/
+.chrome_profile/Profile 60/
+.chrome_profile/Profile 61/
+.chrome_profile/Profile 62/
+.chrome_profile/Profile 63/
+.chrome_profile/Profile 64/
+.chrome_profile/Profile 65/
+.chrome_profile/Profile 66/
+.chrome_profile/Profile 67/
+.chrome_profile/Profile 68/
+.chrome_profile/Profile 69/
+.chrome_profile/Profile 70/
+.chrome_profile/Profile 71/
+.chrome_profile/Profile 72/
+.chrome_profile/Profile 73/
+.chrome_profile/Profile 74/
+.chrome_profile/Profile 75/
+.chrome_profile/Profile 76/
+.chrome_profile/Profile 77/
+.chrome_profile/Profile 78/
+.chrome_profile/Profile 79/
+.chrome_profile/Profile 80/
+.chrome_profile/Profile 81/
+.chrome_profile/Profile 82/
+.chrome_profile/Profile 83/
+.chrome_profile/Profile 84/
+.chrome_profile/Profile 85/
+.chrome_profile/Profile 86/
+.chrome_profile/Profile 87/
+.chrome_profile/Profile 88/
+.chrome_profile/Profile 89/
+.chrome_profile/Profile 90/
+.chrome_profile/Profile 91/
+.chrome_profile/Profile 92/
+.chrome_profile/Profile 93/
+.chrome_profile/Profile 94/
+.chrome_profile/Profile 95/
+.chrome_profile/Profile 96/
+.chrome_profile/Profile 97/
+.chrome_profile/Profile 98/
+.chrome_profile/Profile 99/
+.chrome_profile/Profile 100/
+.chrome_profile/Profile 101/
+.chrome_profile/Profile 102/
+.chrome_profile/Profile 103/
+.chrome_profile/Profile 104/
+.chrome_profile/Profile 105/
+.chrome_profile/Profile 106/
+.chrome_profile/Profile 107/
+.chrome_profile/Profile 108/
+.chrome_profile/Profile 109/
+.chrome_profile/Profile 110/
+.chrome_profile/Profile 111/
+.chrome_profile/Profile 112/
+.chrome_profile/Profile 113/
+.chrome_profile/Profile 114/
+.chrome_profile/Profile 115/
+.chrome_profile/Profile 116/
+.chrome_profile/Profile 117/
+.chrome_profile/Profile 118/
+.chrome_profile/Profile 119/
+.chrome_profile/Profile 120/
+.chrome_profile/Profile 121/
+.chrome_profile/Profile 122/
+.chrome_profile/Profile 123/
+.chrome_profile/Profile 124/
+.chrome_profile/Profile 125/
+.chrome_profile/Profile 126/
+.chrome_profile/Profile 127/
+.chrome_profile/Profile 128/
+.chrome_profile/Profile 129/
+.chrome_profile/Profile 130/
+.chrome_profile/Profile 131/
+.chrome_profile/Profile 132/
+.chrome_profile/Profile 133/
+.chrome_profile/Profile 134/
+.chrome_profile/Profile 135/
+.chrome_profile/Profile 136/
+.chrome_profile/Profile 137/
+.chrome_profile/Profile 138/
+.chrome_profile/Profile 139/
+.chrome_profile/Profile 140/
+.chrome_profile/Profile 141/
+.chrome_profile/Profile 142/
+.chrome_profile/Profile 143/
+.chrome_profile/Profile 144/
+.chrome_profile/Profile 145/
+.chrome_profile/Profile 146/
+.chrome_profile/Profile 147/
+.chrome_profile/Profile 148/
+.chrome_profile/Profile 149/
+.chrome_profile/Profile 150/
+.chrome_profile/Profile 151/
+.chrome_profile/Profile 152/
+.chrome_profile/Profile 153/
+.chrome_profile/Profile 154/
+.chrome_profile/Profile 155/
+.chrome_profile/Profile 156/
+.chrome_profile/Profile 157/
+.chrome_profile/Profile 158/
+.chrome_profile/Profile 159/
+.chrome_profile/Profile 160/
+.chrome_profile/Profile 161/
+.chrome_profile/Profile 162/
+.chrome_profile/Profile 163/
+.chrome_profile/Profile 164/
+.chrome_profile/Profile 165/
+.chrome_profile/Profile 166/
+.chrome_profile/Profile 167/
+.chrome_profile/Profile 168/
+.chrome_profile/Profile 169/
+.chrome_profile/Profile 170/
+.chrome_profile/Profile 171/
+.chrome_profile/Profile 172/
+.chrome_profile/Profile 173/
+.chrome_profile/Profile 174/
+.chrome_profile/Profile 175/
+.chrome_profile/Profile 176/
+.chrome_profile/Profile 177/
+.chrome_profile/Profile 178/
+.chrome_profile/Profile 179/
+.chrome_profile/Profile 180/
+.chrome_profile/Profile 181/
+.chrome_profile/Profile 182/
+.chrome_profile/Profile 183/
+.chrome_profile/Profile 184/
+.chrome_profile/Profile 185/
+.chrome_profile/Profile 186/
+.chrome_profile/Profile 187/
+.chrome_profile/Profile 188/
+.chrome_profile/Profile 189/
+.chrome_profile/Profile 190/
+.chrome_profile/Profile 191/
+.chrome_profile/Profile 192/
+.chrome_profile/Profile 193/
+.chrome_profile/Profile 194/
+.chrome_profile/Profile 195/
+.chrome_profile/Profile 196/
+.chrome_profile/Profile 197/
+.chrome_profile/Profile 198/
+.chrome_profile/Profile 199/
+.chrome_profile/Profile 200/
+
