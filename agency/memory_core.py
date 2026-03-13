@@ -243,6 +243,31 @@ class MemoryCore:
         self.db.execute("INSERT INTO fts_history (id, content) VALUES (?, ?)", (h_id, content))
         self.db.commit()
 
+
+    def get_kinetic_context(self, current_prompt: str, limit: int = 50) -> str:
+        """
+        LAYER 2: THE KINETIC LENS
+        Uses a reasoning model to compress raw logs into a heuristic card.
+        """
+        try:
+            from agency.kinetic_lens_blueprint import KineticLens
+            from agency.open_web_ui import OpenWebUIClient
+
+            client = OpenWebUIClient()
+            lens = KineticLens(self.db_path, client)
+
+            # 1. Pull raw narrative
+            narrative = lens.pull_recent_narrative(limit=limit)
+
+            # 2. Generate Heuristic Card via Reasoning Model
+            card = lens.generate_heuristic_card(narrative)
+
+            # 3. Inject context
+            return lens.inject_context(current_prompt, card)
+        except Exception as e:
+            logging.error(f"Kinetic Lens Failure: {e}")
+            return current_prompt # Fallback to raw prompt
+    
 if __name__ == "__main__":
     mem = MemoryCore()
     if os.path.exists("E:/0x/README.md"):
