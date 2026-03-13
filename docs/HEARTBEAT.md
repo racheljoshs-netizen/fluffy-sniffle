@@ -1,5 +1,8 @@
 # HEARTBEAT.md
+# This file is checked by the background processes to maintain the system pulse.
 
-# Keep this file empty (or with only comments) to skip heartbeat API calls.
-
-# Add tasks below when you want the agent to check something periodically.
+# ACTIVE DIRECTIVES:
+- Monitor background Python processes (Plural Substrate, Long Term Ops).
+- Check `docs/intelligence` for new findings on OpenClaw or Paperclip.
+- Review Apollo and Alex tactical reports.
+- If idle, query Exa for new tools or extensions relevant to the Stratmeyer Core.
