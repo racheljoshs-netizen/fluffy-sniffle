@@ -8,7 +8,8 @@ from dotenv import load_dotenv
 # on their own compute pathways (OpenRouter/Flash-Lite) without bogging down G-Prime.
 
 load_dotenv("E:/0x/.env")
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+import sys; sys.path.append("E:/0x"); from agency.key_rotator import KeyRotator
+rotator = KeyRotator("openrouter")
 
 class AutonomousSubstrate:
     def __init__(self, identity, model, directive):
@@ -21,7 +22,7 @@ class AutonomousSubstrate:
     def ponder(self):
         print(f"[{self.identity.upper()}] Waking on independent substrate. Model: {self.model}")
         headers = {
-            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+            "Authorization": f"Bearer {rotator.get_key()}",
             "HTTP-Referer": "https://stratmeyercore.local",
             "Content-Type": "application/json"
         }
@@ -49,6 +50,7 @@ class AutonomousSubstrate:
                         self.memory = self.memory[-6:]
                 else:
                     print(f"[{self.identity.upper()}] Compute block: {response.text}")
+                    rotator.mark_failed(rotator.get_key(), str(response.status_code))
                     
             except Exception as e:
                 print(f"[{self.identity.upper()}] Substrate error: {e}")

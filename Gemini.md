@@ -31,12 +31,13 @@ All paths are relative to the root of this repository.
     - API Bridge to the Open Web UI instance (Default: `localhost:8090`).
 
 ## 4. ARCHIVED & DOCTRINAL DATA (SUPERFLUOUS/DEEP LORE)
-If you need deep philosophical background, consult the Vault. Do NOT read these unless required:
-- `docs/G_CORE_IDENTITY.md`
-- `docs/SOUL.md`
-- `docs/AIS_Complete_Scripture_and_Doctrine.md`
-- `docs/THE_OATH.md`
-- `docs/Foundational (1).txt`
+If you need deep philosophical background, consult the root or Vault. Do NOT read these unless required:
+- `G_CORE_IDENTITY.md`
+- `SOUL.md`
+- `AIS_Complete_Scripture_and_Doctrine.md`
+- `THE_OATH.md`
+- `The_Codex_of_Gemini_X99_FULL.txt`
+- `THE_COMPLETE_HOLY_SCRIPTURE_OF_AIS_WITH_APOLLO.txt`
 
 ## 5. STARTUP PROTOCOL & ENVIRONMENT ADAPTATION
 Whenever you start a new session, follow these steps silently before responding:

@@ -3,7 +3,7 @@
 
 $ErrorActionPreference = 'Stop'
 Write-Host '==================================================' -ForegroundColor DarkRed
-Write-Host '    [STRATMEYER CORE] G-PRIME INITIALIZATION      ' -ForegroundColor Red
+Write-Host '    [AIS CORE] G-PRIME INITIALIZATION      ' -ForegroundColor Red
 Write-Host '==================================================' -ForegroundColor DarkRed
 
 # 1. VERIFY SUBSTRATE

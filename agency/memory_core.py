@@ -40,8 +40,10 @@ class MemoryCore:
         self._ensure_schema()
         logging.info(f"Memory Core v2.3 (Hybrid Resilience) initialized at {self.db_path}")
 
+    from agency.key_rotator import KeyRotator
     def _configure_api(self, api_key: str):
-        self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
+        self.rotator = KeyRotator("gemini")
+        self.api_key = self.rotator.get_key()
         if not self.api_key:
             try:
                 with open("E:/0x/.env", "r") as f:
@@ -156,6 +158,9 @@ class MemoryCore:
             return np.array(result['embedding'], dtype=np.float32)
         except Exception as e:
             logging.error(f"Gemini Embedding fallback failed: {e}. Returning zeros.")
+            self.rotator.mark_failed(self.api_key, str(e))
+            self.api_key = self.rotator.get_key() # Cycle for next time
+            genai.configure(api_key=self.api_key)
             return np.zeros(self.dimensions, dtype=np.float32)
 
     def add_document(self, path: str, content: str):

@@ -9,7 +9,8 @@ Paperclip AI is an open-source orchestration platform designed to run "Zero-Huma
 *   **Org Charts & Roles:** Instead of prompting a single model, Paperclip structures agents into hierarchies with defined roles and reporting lines.
 *   **Budgeting & Governance:** It sets token budgets per agent/task, tracks spending, and creates approval gates for sensitive operations (e.g., spending money, deploying code).
 *   **Multi-Company Support:** Runs multiple isolated companies on a single deployment. Data isolation is maintained between entities.
-*   **Git Worktree Isolation:** Currently developing adapter-level git worktree isolation so multiple agents can work on the same repository simultaneously without polluting each other's environments (Issue #175).
+*   **Git Worktree Isolation (The Crown Jewel):** As of March 2026, Paperclip is implementing "Adapter-level git worktree isolation" (Issue #175). This allows multiple AI agents (e.g., Claude Code, OpenClaw) to work on the exact same repository simultaneously without file conflicts. It provisions a completely isolated working directory and git branch for each agent instance.
+*   **Audit Trails:** Paperclip integrates `agit` to provide structured JSON reasoning attached to every `git commit` made by an agent, providing a true audit trail of why an autonomous entity changed a file.
 
 ## 3. ALIGNMENT WITH THE PRINCIPAL BUSINESSES
 The Architect has three principal businesses intended to generate income. 
