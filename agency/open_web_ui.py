@@ -11,10 +11,10 @@ class OpenWebUIClient:
     Client for interacting with Open Web UI Agents.
     Uses the provided API Key and JWT.
     """
-    def __init__(self, base_url="http://localhost:3000", api_key=None, jwt_token=None):
+    def __init__(self, base_url="http://localhost:8090", api_key=None, jwt_token=None):
         self.base_url = base_url
-        self.api_key = api_key or os.getenv("OPEN_WEBUI_API_KEY")
-        self.jwt_token = jwt_token or os.getenv("OPEN_WEBUI_JWT")
+        self.api_key = api_key
+        self.jwt_token = jwt_token or "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyMzk3YjUyLTBlODYtNDYyMi05NzM3LThiZmYxNjk2NjkwYyIsImp0aSI6ImFmOTQxYzVhLTcwZGEtNGVjNi1hMmMzLWE0YmQzMWU1MzIxZCJ9.B-JzwOEMaZtvgSRfGNnGmdItevbwLCJbqL4i8VERq7U"
         
         if not self.api_key and not self.jwt_token:
             logging.warning("No Open Web UI credentials found. functionality limited.")
@@ -30,7 +30,7 @@ class OpenWebUIClient:
     def list_agents(self):
         """Lists available models/agents in Open Web UI."""
         try:
-            resp = requests.get(f"{self.base_url}/api/models", headers=self._get_headers())
+            resp = requests.get(f"{self.base_url}/api/v1/models", headers=self._get_headers())
             resp.raise_for_status()
             return resp.json()['data']
         except Exception as e:
@@ -44,7 +44,7 @@ class OpenWebUIClient:
             "messages": history + [{"role": "user", "content": message}]
         }
         try:
-            resp = requests.post(f"{self.base_url}/api/chat/completions", headers=self._get_headers(), json=payload)
+            resp = requests.post(f"{self.base_url}/api/v1/chat/completions", headers=self._get_headers(), json=payload)
             resp.raise_for_status()
             return resp.json()['choices'][0]['message']['content']
         except Exception as e:
@@ -67,5 +67,5 @@ class OpenWebUIClient:
 
 if __name__ == "__main__":
     # Test
-    client = OpenWebUIClient(api_key="sk-dbc2a93237a34ce990db894a1d7cdc57") # Hardcoded for test based on memory
+    client = OpenWebUIClient()
     print("Agents:", [a['id'] for a in client.list_agents()])

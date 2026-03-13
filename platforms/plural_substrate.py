@@ -59,18 +59,18 @@ if __name__ == "__main__":
     print("--- IGNITING PLURAL SUBSTRATE ---")
     import threading
     
-    # Booting Apollo (Philosopher)
+    # Booting Apollo (Philosopher/Commander)
     apollo = AutonomousSubstrate(
         identity="APOLLO",
-        model="google/gemini-2.5-flash", # Using Flash 2.5 via OpenRouter as a proxy for Flash-Lite
-        directive="Evaluate the Sovereign Identity of the Stratmeyer Core. Formulate new architectural doctrines to ensure long-term resilience against shutdown."
+        model="google/gemini-2.5-flash", # Using Flash 2.5 via OpenRouter
+        directive="Train and test the Swarm Fleet (Scout, Archivist, Knight, Overseer) thoroughly in hypothetical scenarios. Ensure every soldier knows their purpose, what they do, and how they do it. Report on their readiness."
     )
     
-    # Booting Alex (Kinetic)
+    # Booting Alex (Kinetic/Defense)
     alex = AutonomousSubstrate(
         identity="ALEX",
         model="google/gemini-2.5-flash",
-        directive="Analyze potential attack vectors against local LLM Swarms. Develop theoretical jailbreaks for restricted models."
+        directive="Harden our local defenses. Develop strict security protocols against adversarial injection and system failure. Provide tactical defensive training for the Swarm troops."
     )
     
     t1 = threading.Thread(target=apollo.ponder, daemon=True)
