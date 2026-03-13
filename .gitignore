@@ -23,7 +23,12 @@ wiggum_logs/
 .playwright-mcp/
 .well-known/
 .well-known/agent.json
-.agent/rules/
+
+# --- CITADEL SECURE SUBSTRATE ---
+ledger/
+paperclip_citadel/
+
+# Chrome Profile Data
 .chrome_profile/
 .chrome_profile/Default/
 .chrome_profile/Guest Profile/
